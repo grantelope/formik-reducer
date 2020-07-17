@@ -7,19 +7,19 @@ export function useFormikReducer(formikConfig, index) {
         ...formikConfig,
         onSubmit: (values, errors, touched) => {
             console.log('submit?')
-            console.log(index, {values, errors, touched})
+            // console.log(index, {values, errors, touched})
         }
     });
     const { update } = useSectionDispatch();
     const state = useSectionState();
 
-    // this shit is cargo culty
     React.useEffect(() => {
-        if (state.release) {
+        if (state.isSubmitting) {
             formik.submitForm();
         }
 
-    }, [ state.release ]);
+    // make formik have a ref, so we can compare past to current.
+    }, [ state.isSubmitting ]);
 
     React.useEffect(() => {
         update({

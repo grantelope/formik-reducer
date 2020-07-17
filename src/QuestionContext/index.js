@@ -31,6 +31,8 @@ export const useSectionDispatch = () => {
 
   const submit = React.useCallback(() => {
     dispatch({ type: actions.SUBMIT });
+
+    setTimeout(() => dispatch({ type: actions.SUBMIT }), 10);
   }, [ dispatch ]);
 
 

@@ -4,7 +4,7 @@ export const actions = {
 };
 
 export const initialContext = {
-    release: null
+    isSubmitting: false
 };
 
 export const reducer = (state, { type, payload }) => {
@@ -12,7 +12,7 @@ export const reducer = (state, { type, payload }) => {
     case actions.SUBMIT:
         return {
             ...state,
-            release: Date.now()
+            isSubmitting: !state.isSubmitting
         };
 
     case actions.UPDATE:

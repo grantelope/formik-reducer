@@ -19,6 +19,15 @@ export default function Section({ application, index }) {
         }
     }, index);
 
+    React.useEffect(() => {
+        if (application) {
+            formik.setFieldValue('firstName', application?.firstName);
+            formik.setFieldValue('lastName', application?.lastName);
+        }
+    // maybe make application have a ref, so we can compare past to current.
+    // something isn't right if adding 'formik' here chugs it.
+    }, [ application ]);
+
     return (
         <>
             <Box style={{width: '500px', margin: '20px '}}>

@@ -6,7 +6,10 @@ import Data from './section/Data';
 
 import './App.css'
 
+const initApp = {firstName: 'Nick', lastName: 'Jones'};
+
 function App() {
+    const [application, setApplication] = React.useState(initApp);
   return (
     <>
         <SectionProvider>
@@ -14,10 +17,13 @@ function App() {
             <Section index="foo" />
             <br /><br />
             <h1>Bar section</h1>
-            <Section index="bar" application={{firstName: 'Nick', lastName: 'Jones'}}/>
+            <Section index="bar" application={application}/>
             <Button />
             <Data />
+
         </SectionProvider>
+
+        <button onClick={() => setApplication({firstName: 'Peter', lastName: 'Pan'})}>Reset</button>
     </>
 
   )
